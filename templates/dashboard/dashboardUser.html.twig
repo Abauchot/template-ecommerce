@@ -1,0 +1,31 @@
+{% extends 'dashboard/index.html.twig' %}
+
+{% block dashboard_navbar %}
+{% endblock %}
+
+
+{% block random %}
+    <div class="container mt-5">
+        <h1 class="text-center">Liste des utilisateurs</h1>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Prénom d'utilisateur</th>
+                <th> Noml d'utilisateur</th>
+                <th>Adresse email</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.firstname }}</td>
+                    <td>{{ user.lastname }}</td>
+                    <td>{{ user.email }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

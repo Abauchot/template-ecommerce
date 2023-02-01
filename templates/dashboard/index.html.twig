@@ -18,7 +18,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="#">Utilisateurs</a>
+                <a class="nav-link" href="{{ path('app_dashboard_user') }}">Utilisateurs</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Produits</a>
@@ -42,11 +42,10 @@
                 </div>
                 <div class="card-body">
                     <p>Il y a actuellement utilisateurs enregistrés.</p>
-                    <a href="#" class="btn btn-primary">Gérer les utilisateurs</a>
+                    <a href="{{ path('app_dashboard_user') }}" class="btn btn-primary">Gérer les utilisateurs</a>
                 </div>
             </div>
         </div>
-
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
@@ -58,28 +57,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    Catégories
-                </div>
-                <div class="card-body">
-                    <p>Il y a actuellement catégories enregistrés.</p>
-                    <a href="#" class="btn btn-primary">Gérer les catégories</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    Commandes
-                </div>
-                <div class="card-body">
-                    <p>Il y a actuellement commandes enregistrés.</p>
-                    <a href="#" class="btn btn-primary">Gérer les commandes</a>
-                </div>
-            </div>
-        </div>
-
     </div>
 </div>
+{% block random %}
+{% endblock %}
