@@ -24,7 +24,7 @@
                 <a class="nav-link" href="#">Produits</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Catégories</a>
+                <a class="nav-link" href="{{ path('app_dashboard_category') }}">Catégories</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Commandes</a>
@@ -41,8 +41,8 @@
                     Utilisateurs
                 </div>
                 <div class="card-body">
-                    <p>Il y a actuellement utilisateurs enregistrés.</p>
                     <a href="{{ path('app_dashboard_user') }}" class="btn btn-primary">Gérer les utilisateurs</a>
+                    <a href="{{ path('app_dashboard_user') }}" class="btn btn-primary">Créer un utilisateur</a>
                 </div>
             </div>
         </div>
@@ -52,8 +52,18 @@
                     Produits
                 </div>
                 <div class="card-body">
-                    <p>Il y a actuellement produits enregistrés.</p>
                     <a href="#" class="btn btn-primary">Gérer les produits</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    Catégories
+                </div>
+                <div class="card-body">
+                    <a href="{{ path('app_dashboard_category') }}" class="btn btn-primary">Gérer les catégories</a>
+                    <a href="{{ path('app_dashboard_category') }}" class="btn btn-primary">Créer une catégorie</a>
                 </div>
             </div>
         </div>
