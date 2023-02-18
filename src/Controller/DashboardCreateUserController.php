@@ -25,7 +25,7 @@ class DashboardCreateUserController extends AbstractController
         $formAdminCreateUser = $this->createForm(DashboardUserCreateType::class,$user);
 
         $formAdminCreateUser ->handleRequest($request);
-        if($formAdminCreateUser->isValid() && $formAdminCreateUser->isSubmitted()){
+        if($formAdminCreateUser->isSubmitted() && $formAdminCreateUser->isValid()){
             $user = $formAdminCreateUser ->getData();
             $password = $hasher->hashPassword($user,$user->getPassword());
             $user -> setPassword($password);
