@@ -19,6 +19,12 @@
                 <tr>
                     <td>{{ category.id }}</td>
                     <td>{{ category.name }}</td>
+                    <td>
+                        <form method="post" action="{{ path('app_dashboard_category_delete',{'id':category.id}) }}" onsubmit="return confirm('Êtes vous sur de ouvloir supprimer cette catégorie')">
+                            <button type="submi" class="btn btn-danger">Supprimer</button>
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ category.id) }}">
+                        </form>
+                    </td>
                 </tr>
             {% endfor %}
             </tbody>
