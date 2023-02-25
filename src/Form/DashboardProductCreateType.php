@@ -2,11 +2,17 @@
 
 namespace App\Form;
 
+use App\Entity\Category;
 use App\Entity\Product;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\Length;
 
 class DashboardProductCreateType extends AbstractType
@@ -30,7 +36,19 @@ class DashboardProductCreateType extends AbstractType
                 ]),
                 'required'=>true
             ])
-            ->add('illustration')
+            ->add('illustration', FileType::class,[
+                'label'=> 'Ajouter une image du produit',
+                'constraints'=> new File([
+                    'maxSize'=>'1024k',
+                    'mimeTypes'=>[
+                        'image/jpeg',
+                        'image/png'
+                    ],
+                    'mimeTypesMessage'=>'Merci de respecter le formation jpg ou png'
+                ]),
+                'required'=> true,
+                'mapped'=>true
+            ])
             ->add('subtitle', TextType::class,[
                 'label'=>"Ajouter un sous-titre à l'article",
                 'constraints'=> new Length([
@@ -47,7 +65,23 @@ class DashboardProductCreateType extends AbstractType
                 ]),
                 'required'=> true
             ])
-            ->add('price')
+            ->add('price', MoneyType::class,[
+                'label'=>'Entrer un prix',
+                'required'=>true,
+                'currency'=>'EUR'
+
+            ])
+
+            ->add('category', EntityType::class,[
+                'label'=>'Catégorie',
+                'class'=>Category::class,
+                'choice_label'=>'name',
+                'required'=>true
+            ])
+
+            ->add('submit', SubmitType::class,[
+                'label'=>"Valider"
+            ])
 
         ;
     }
