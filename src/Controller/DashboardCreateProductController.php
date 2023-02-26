@@ -25,9 +25,19 @@ class DashboardCreateProductController extends AbstractController
         $formAdminCreateProduct -> handleRequest($request);
         if ($formAdminCreateProduct->isSubmitted() && $formAdminCreateProduct->isValid()){
             $product = $formAdminCreateProduct -> getData();
+            $images  = $formAdminCreateProduct->get('illustration')->getData();
+            if($images){
+                $imagesName = $images->getClientOriginalName();
+                $images->move(
+                    $this->getParameter('image_directory'),
+                    $imagesName
+                );
+                $product->setIllustration($imagesName);
+            }
             $this->entityManager->persist($product);
             $this->entityManager->flush();
         }
+
         return $this->render('dashboard/dashboardCreateProduct.html.twig',[
             'formAdminCreateProduct' => $formAdminCreateProduct->createView()
         ]);

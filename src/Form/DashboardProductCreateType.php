@@ -38,6 +38,8 @@ class DashboardProductCreateType extends AbstractType
             ])
             ->add('illustration', FileType::class,[
                 'label'=> 'Ajouter une image du produit',
+                'mapped'=> false,
+                'required'=> true,
                 'constraints'=> new File([
                     'maxSize'=>'1024k',
                     'mimeTypes'=>[
@@ -46,8 +48,7 @@ class DashboardProductCreateType extends AbstractType
                     ],
                     'mimeTypesMessage'=>'Merci de respecter le formation jpg ou png'
                 ]),
-                'required'=> true,
-                'mapped'=>true
+
             ])
             ->add('subtitle', TextType::class,[
                 'label'=>"Ajouter un sous-titre à l'article",

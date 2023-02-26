@@ -29,7 +29,9 @@
                     <td>{{ product.description }}</td>
                     <td>{{ product.subtitle }}</td>
                     <td>{{ product.price }}</td>
-                    <td>{{ product.price }}</td>
+                    <td>
+                        <img src="{{ asset('uploads/product/' ~ product.illustration) }}" alt="{{ product.name }}">
+                    </td>
                 </tr>
             {% endfor %}
             </tbody>
