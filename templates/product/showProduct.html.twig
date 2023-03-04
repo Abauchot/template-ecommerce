@@ -11,7 +11,7 @@
             <h5>{{ product.name }}</h5>
             <span>{{ product.description }}</span><br>
             <span>{{ product.price  | number_format(2) }}€</span>
-            <a href="#" class="btn btn-primary">Ajouter au panier</a>
+            <a href="{{ path('app_add_to_cart',{'id' : product.id}) }}" class="btn btn-primary">Ajouter au panier</a>
         </div>
     </div>
 {% endblock %}
