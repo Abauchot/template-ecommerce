@@ -24,7 +24,6 @@ class Cart
         } else {
             $cart[$id] = 1;
         }
-        
         $session->set('cart', $cart);
     }
 
@@ -38,5 +37,18 @@ class Cart
     {
         $session = $this->requestStack->getSession();
         return $session->remove('cart');
+    }
+    public function removeById($id)
+    {
+        $session = $this->requestStack->getSession();
+        $cart = $session->get('cart', []);
+        unset($cart[$id]);
+        return $session->set('cart',$cart);
+    }
+
+    public function decrease($id)
+    {
+        $session = $this->requestStack->getSession();
+
     }
 }
